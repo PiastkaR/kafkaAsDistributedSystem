@@ -12,21 +12,21 @@ import java.util.Properties;
 import java.util.concurrent.ExecutionException;
 
 
-public class Application {
+public class ApplicationProducer {
     private static final String TOPIC = "events";
     private static final String BOOTSTRAP_SERVERS = "localhost:9092,localhost:9093,localhost:9094";//added in case one server is down the other becomes a gateway
 
-    public static void main(String[] args) {
-        Producer<Long, String> kafkaProducer = createKafkaProducer(BOOTSTRAP_SERVERS);
-        try {
-            produceMessages(10, kafkaProducer);
-        } catch (ExecutionException | InterruptedException e) {
-            e.printStackTrace();
-        } finally {
-            kafkaProducer.flush();
-            kafkaProducer.close();
-        }
-    }
+//    public static void main(String[] args) {
+//        Producer<Long, String> kafkaProducer = createKafkaProducer(BOOTSTRAP_SERVERS);
+//        try {
+//            produceMessages(10, kafkaProducer);
+//        } catch (ExecutionException | InterruptedException e) {
+//            e.printStackTrace();
+//        } finally {
+//            kafkaProducer.flush();
+//            kafkaProducer.close();
+//        }
+//    }
 
     public static void produceMessages(int numberOfMessages, Producer<Long, String> kafkaProducer) throws ExecutionException, InterruptedException {
         for (int i = 0; i < numberOfMessages; i++) {
